@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Panel Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="admin-page">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-drumstick-bite"></i>
+            <h2>El Buen Sabor</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item active">
+                <i class="fas fa-chart-line"></i>
+                Dashboard
+            </a>
+            <a href="menu-editor.html" class="nav-item">
+                <i class="fas fa-utensils"></i>
+                Editar Menú
+            </a>
+            <a href="pedidos.html" class="nav-item">
+                <i class="fas fa-shopping-bag"></i>
+                Pedidos
+                <span class="badge">3</span>
+            </a>
+            <a href="estadisticas.html" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                Estadísticas
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                Configuración
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <div>
+                    <strong>Admin</strong>
+                    <span>Propietario</span>
+                </div>
+            </div>
+            <button class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <header class="admin-header">
+            <h1>Dashboard</h1>
+            <div class="header-actions">
+                <button class="btn btn--outline">
+                    <i class="fas fa-download"></i>
+                    Exportar Reporte
+                </button>
+                <button class="btn btn--primary">
+                    <i class="fas fa-plus"></i>
+                    Nuevo Producto
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #10b981;">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>$2.450.000</h3>
+                    <p>Ventas Hoy</p>
+                    <span class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i> +12%
+                    </span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #3b82f6;">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>47</h3>
+                    <p>Pedidos Hoy</p>
+                    <span class="stat-trend up">
+                        <i class="fas fa-arrow-up"></i> +8%
+                    </span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #f59e0b;">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>3</h3>
+                    <p>Pedidos Activos</p>
+                    <span class="stat-trend">
+                        En preparación
+                    </span>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #8b5cf6;">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>4.9</h3>
+                    <p>Calificación</p>
+                    <span class="stat-trend">
+                        ⭐⭐⭐⭐⭐
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Orders -->
+        <div class="admin-section">
+            <div class="section-header">
+                <h2>Pedidos Recientes</h2>
+                <a href="pedidos.html">Ver todos →</a>
+            </div>
+
+            <div class="table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Productos</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Hora</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#1234</td>
+                            <td>Juan Pérez</td>
+                            <td>Pollo Broaster, Papas</td>
+                            <td>$42.000</td>
+                            <td><span class="status status-pending">En preparación</span></td>
+                            <td>15:30</td>
+                            <td>
+                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-check"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1233</td>
+                            <td>María García</td>
+                            <td>Picada Mixta</td>
+                            <td>$45.000</td>
+                            <td><span class="status status-delivery">En camino</span></td>
+                            <td>15:15</td>
+                            <td>
+                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                                <button class="btn-icon"><i class="fas fa-check"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#1232</td>
+                            <td>Carlos López</td>
+                            <td>Pechuga Apanada</td>
+                            <td>$32.000</td>
+                            <td><span class="status status-completed">Entregado</span></td>
+                            <td>14:45</td>
+                            <td>
+                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Top Products -->
+        <div class="admin-section">
+            <div class="section-header">
+                <h2>Productos Más Vendidos</h2>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="../assets/images/productos/pollo-broaster.jpg" alt="Pollo Broaster">
+                    <h4>Pollo Broaster</h4>
+                    <p>87 ventas hoy</p>
+                    <span class="product-price">$38.000</span>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/images/productos/picada-mixta.jpg" alt="Picada Mixta">
+                    <h4>Picada Mixta</h4>
+                    <p>52 ventas hoy</p>
+                    <span class="product-price">$45.000</span>
+                </div>
+                <div class="product-card">
+                    <img src="../assets/images/productos/pechuga-apanada.jpg" alt="Pechuga">
+                    <h4>Pechuga Apanada</h4>
+                    <p>41 ventas hoy</p>
+                    <span class="product-price">$32.000</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
