@@ -1,0 +1,32 @@
+{
+  "name": "demo-piqueteadero-menudigital",
+  "version": "1.0.0",
+  "description": "Sistema de menú digital interactivo para piqueteadero con IA integrada",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npx http-server public -p 8080 -o",
+    "dev": "npx live-server public",
+    "test": "echo \"No tests configured yet\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madfer93/demo-piqueteadero-menudigital.git"
+  },
+  "keywords": [
+    "menu-digital",
+    "piqueteadero",
+    "restaurante",
+    "chatbot",
+    "whatsapp",
+    "ai",
+    "botpress"
+  ],
+  "author": "Manuel Madrid <madfer1993@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madfer93/demo-piqueteadero-menudigital/issues"
+  },
+  "homepage": "https://github.com/madfer93/demo-piqueteadero-menudigital#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}
