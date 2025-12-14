@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Menú digital de El Buen Sabor - Piqueteadero en Villavicencio. Pedidos a domicilio por WhatsApp">
+    <meta property="og:title" content="El Buen Sabor - Menú Digital">
+    <meta property="og:image" content="https://madfer93.github.io/demo-piqueteadero-menudigital/assets/images/hero.jpg">
+    <title>El Buen Sabor - Piqueteadero</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">
+                <i class="fas fa-drumstick-bite"></i>
+                <span>El Buen Sabor</span>
+            </div>
+            <ul class="nav__menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="#porciones">Porciones</a></li>
+                <li><a href="#promociones">Promociones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li>
+                    <button class="btn-cart" id="btnCart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero__overlay"></div>
+        <div class="hero__content container">
+            <div class="hero__text">
+                <span class="hero__tag">🔥 El Original desde 1998</span>
+                <h1 class="hero__title">
+                    El Mejor Piqueteadero de <span class="text-highlight">Villavicencio</span>
+                </h1>
+                <p class="hero__description">
+                    Pollo broaster crujiente, porciones de carne jugosas y los mejores acompañantes. 
+                    <strong>Pedidos a domicilio en 30 minutos o menos.</strong>
+                </p>
+                <div class="hero__buttons">
+                    <a href="menu.html" class="btn btn--primary btn--large">
+                        <i class="fas fa-utensils"></i>
+                        Ver Menú Completo
+                    </a>
+                    <a href="#" class="btn btn--whatsapp btn--large" id="chefbot-btn">
+                        <i class="fas fa-robot"></i>
+                        ChefBot IA
+                    </a>
+                </div>
+                <div class="hero__features">
+                    <div class="feature-badge">
+                        <i class="fas fa-clock"></i>
+                        <span>Entrega 30 min</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-star"></i>
+                        <span>4.9/5 ⭐ (1,200 reseñas)</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Domicilio gratis +$35k</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__visual">
+                <div class="hero__image-main">
+                    <img src="assets/images/productos/picada-principal.jpg" alt="Pollo Broaster Crujiente" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Porciones Estrella -->
+    <section id="porciones" class="porciones">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🍗 Lo Más Pedido</span>
+                <h2 class="section__title">Nuestras Porciones Estrella</h2>
+                <p class="section-description">Perfectas para compartir o disfrutar solo</p>
+            </div>
+
+            <div class="porciones__grid">
+                <!-- Pollo Broaster -->
+                <div class="porcion-card" data-animate="fade-up">
+                    <div class="card-image">
+                        <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Pollo Broaster">
+                        <span class="card-badge badge-hot">🔥 Top Ventas</span>
+                        <button class="btn-favorite">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="card-content">
+                        <h3>Pollo Broaster Completo</h3>
+                        <p class="card-description">
+                            Pollo entero broaster extra crujiente con papas fritas, 
+                            ensalada y salsas especiales
+                        </p>
+                        <div class="card-info">
+                            <span class="info-item">
+                                <i class="fas fa-users"></i> 4-5 personas
+                            </span>
+                            <span class="info-item">
+                                <i class="fas fa-fire"></i> Picante opcional
+                            </span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Desde</span>
+                                <span class="price-value">$38.000</span>
+                            </div>
+                            <button class="btn btn--primary" onclick="addToCart('Pollo Broaster Completo', 38000, 'assets/images/productos/pollo-broster-completo.jpg')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pechuga Apanada -->
+                <div class="porcion-card" data-animate="fade-up">
+                    <div class="card-image">
+                        <img src="assets/images/productos/pechuga-apanada-xxl.jpg" alt="Pechuga Apanada">
+                    </div>
+                    <div class="card-content">
+                        <h3>Pechuga Apanada Gigante</h3>
+                        <p class="card-description">
+                            Pechuga de pollo apanada tamaño XXL con papas
+                            y ensalada fresca
+                        </p>
+                        <div class="card-info">
+                            <span class="info-item">
+                                <i class="fas fa-users"></i> 2-3 personas
+                            </span>
+                            <span class="info-item">
+                                <i class="fas fa-drumstick-bite"></i> Extra grande
+                            </span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Desde</span>
+                                <span class="price-value">$32.000</span>
+                            </div>
+                            <button class="btn btn--primary" onclick="addToCart('Pechuga Apanada Gigante', 32000, 'assets/images/productos/pechuga-apanada-xxl.jpg')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Picada Mixta -->
+                <div class="porcion-card" data-animate="fade-up">
+                    <div class="card-image">
+                        <img src="assets/images/productos/picada-mixta.jpg" alt="Picada Mixta">
+                        <span class="card-badge badge-new">✨ Nuevo</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Picada Mixta Especial</h3>
+                        <p class="card-description">
+                            Carne, pollo, chorizo, chicharrón, morcilla, papa criolla 
+                            y plátano maduro
+                        </p>
+                        <div class="card-info">
+                            <span class="info-item">
+                                <i class="fas fa-users"></i> 3-4 personas
+                            </span>
+                            <span class="info-item">
+                                <i class="fas fa-pepper-hot"></i> Súper picante
+                            </span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Desde</span>
+                                <span class="price-value">$45.000</span>
+                            </div>
+                            <button class="btn btn--primary" onclick="addToCart('Picada Mixta Especial', 45000, 'assets/images/productos/picada-mixta.jpg')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Costillas BBQ -->
+                <div class="porcion-card" data-animate="fade-up">
+                    <div class="card-image">
+                        <img src="assets/images/productos/costillas-bbq.jpg" alt="Costillas BBQ">
+                    </div>
+                    <div class="card-content">
+                        <h3>Costillas BBQ Premium</h3>
+                        <p class="card-description">
+                            Costillas de cerdo bañadas en salsa BBQ casera con 
+                            papas gajo y ensalada coleslaw
+                        </p>
+                        <div class="card-info">
+                            <span class="info-item">
+                                <i class="fas fa-users"></i> 2 personas
+                            </span>
+                            <span class="info-item">
+                                <i class="fas fa-award"></i> Premium
+                            </span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Desde</span>
+                                <span class="price-value">$42.000</span>
+                            </div>
+                            <button class="btn btn--primary" onclick="addToCart('Costillas BBQ Premium', 42000, 'assets/images/productos/costillas-bbq.jpg')">
+                                <i class="fas fa-cart-plus"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-cta">
+                <a href="menu.html" class="btn btn--secondary btn--large">
+                    Ver Todas las Porciones <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promociones -->
+    <section id="promociones" class="promociones">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">🎉 Ofertas Especiales</span>
+                <h2 class="section__title">Promociones del Mes</h2>
+            </div>
+
+            <div class="promociones__grid">
+                <div class="promo-card promo-primary">
+                    <div class="promo-icon">🍗🍗</div>
+                    <h3>2x1 Pollos Broaster</h3>
+                    <p>Todos los martes y jueves</p>
+                    <span class="promo-price">$68.000 <small>(antes $76.000)</small></span>
+                    <button class="btn btn--light">
+                        <i class="fab fa-whatsapp"></i> Pedir Ahora
+                    </button>
+                </div>
+
+                <div class="promo-card promo-secondary">
+                    <div class="promo-icon">🍽️</div>
+                    <h3>Combo Familiar</h3>
+                    <p>Pollo + Picada + 2 Bebidas + Papas</p>
+                    <span class="promo-price">$85.000 <small>(ahorra $25.000)</small></span>
+                    <button class="btn btn--light">
+                        <i class="fab fa-whatsapp"></i> Pedir Ahora
+                    </button>
+                </div>
+
+                <div class="promo-card promo-accent">
+                    <div class="promo-icon">⚡</div>
+                    <h3>Happy Hour</h3>
+                    <p>15% OFF de 3pm a 6pm</p>
+                    <span class="promo-price">En TODO el menú</span>
+                    <button class="btn btn--light">
+                        <i class="fab fa-whatsapp"></i> Pedir Ahora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ChefBot CTA -->
+    <section class="chefbot-cta">
+        <div class="container">
+            <div class="chefbot-content">
+                <div class="chefbot-visual">
+                    <div class="card-image">
+                        <img src="assets/images/ChefBot IA.jpg" alt="ChefBot IA">
+                    </div>
+                </div>
+                <div class="chefbot-text">
+                    <h2>🤖 ¿No sabes qué pedir?</h2>
+                    <p>ChefBot IA te ayuda a elegir según tus gustos, presupuesto y número de personas</p>
+                    <ul class="chefbot-features">
+                        <li><i class="fas fa-check-circle"></i> Recomendaciones personalizadas</li>
+                        <li><i class="fas fa-check-circle"></i> Información nutricional</li>
+                        <li><i class="fas fa-check-circle"></i> Combos inteligentes</li>
+                        <li><i class="fas fa-check-circle"></i> Atención 24/7</li>
+                    </ul>
+                    <div class="chefbot-buttons">
+                        <button class="btn btn--whatsapp btn--large" id="open-chefbot">
+                            <i class="fab fa-whatsapp"></i>
+                            Hablar con ChefBot
+                        </button>
+                        <span class="chefbot-note">Responde en menos de 5 segundos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section__title">📍 Encuéntranos</h2>
+            </div>
+
+            <div class="contacto__grid">
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp</h3>
+                    <p>+57 312 345 6789</p>
+                    <a href="https://wa.link/ou9cak" class="btn btn--outline btn--small" target="_blank">
+                        Enviar Mensaje
+                    </a>
+                </div>
+
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Teléfono</h3>
+                    <p>+57 (8) 662 3456</p>
+                    <a href="tel:+5786623456" class="btn btn--outline btn--small">
+                        Llamar Ahora
+                    </a>
+                </div>
+
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Dirección</h3>
+                    <p>Calle 45 #23-10<br>Villavicencio, Meta</p>
+                    <a href="#" class="btn btn--outline btn--small">
+                        Ver Mapa
+                    </a>
+                </div>
+
+                <div class="contacto-card">
+                    <div class="contacto-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horario</h3>
+                    <p><strong>Lun-Dom:</strong><br>11:00 AM - 11:00 PM</p>
+                    <span class="status-open">🟢 Abierto ahora</span>
+                </div>
+            </div>
+
+            <!-- Mapa -->
+            <div class="mapa-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.4857477889!2d-73.6261!3d4.1420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDgnMzEuMiJOIDczwrAzNyczNC4wIlc!5e0!3m2!1ses!2sco!4v1234567890"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer-section">
+                    <h4>🍗 El Buen Sabor</h4>
+                    <p>El piqueteadero más querido de Villavicencio desde 1998</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Menú</h4>
+                    <ul class="footer-links">
+                        <li><a href="menu.html">Menú Completo</a></li>
+                        <li><a href="#porciones">Porciones</a></li>
+                        <li><a href="#promociones">Promociones</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Recibe promociones exclusivas</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit" class="btn btn--primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 El Buen Sabor - Piqueteadero. Todos los derechos reservados.</p>
+                <p class="demo-note">
+                    🎯 Demo creado por <a href="https://madfer93.github.io/Perfil-comercial-Manuel/" target="_blank">Manuel Madrid</a> - 
+                    <a href="https://wa.link/ou9cak" target="_blank">Solicita tu demo personalizado</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+<!-- Carrito Sidebar Avanzado -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar__header">
+            <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
+            <button class="cart-sidebar__close" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="free-delivery-banner">
+            <div class="progress-bar-container">
+                <div id="freeDeliveryProgress" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <p id="freeDeliveryText" class="progress-text">
+                ¡Agrega $35.000 más para envío GRATIS! 🚚
+            </p>
+        </div>
+
+        <div class="cart-sidebar__content">
+            <div id="cartEmpty" class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <h4>Tu carrito está vacío</h4>
+                <p>¡Agrega deliciosos platos desde nuestro menú!</p>
+                <a href="menu.html" class="btn-primary-small">Ver Menú Completo</a>
+            </div>
+            <div id="cartItems" class="cart-items"></div>
+        </div>
+
+        <div class="cart-sidebar__footer">
+            <div class="cart-totals">
+                <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Domicilio:</span>
+                    <span id="cartDelivery">$3.000</span>
+                </div>
+                <div class="cart-total-row cart-total-row--total">
+                    <strong>Total:</strong>
+                    <strong id="cartTotal">$0</strong>
+                </div>
+            </div>
+            <button id="btnCheckout" class="btn-checkout" onclick="cartManager.sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+            </button>
+            <button class="btn-clear-cart" onclick="if(confirm('¿Vaciar carrito?')) cartManager.clear()">
+                <i class="fas fa-trash-alt"></i> Vaciar Carrito
+            </button>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.link/ou9cak" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/integracion.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+
+    <!-- Control del Carrito -->
+    <script>
+        const cartBtn = document.getElementById('btnCart');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartClose = document.getElementById('closeCart');
+
+        function openCart() {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (cartManager) cartManager.updateUI();
+        }
+
+        function closeCart() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (cartBtn) cartBtn.addEventListener('click', openCart);
+        if (cartClose) cartClose.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cartSidebar.classList.contains('active')) closeCart();
+        });
+    </script>
+</body>
+</html>
