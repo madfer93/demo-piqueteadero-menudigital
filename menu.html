@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Completo - El Buen Sabor</title>
+    <meta name="description" content="Menú completo de El Buen Sabor - Piqueteadero en Villavicencio">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav__logo">
+                <span class="logo-text">El Buen Sabor</span>
+            </a>
+            
+            <ul class="nav__menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="menu.html" class="active">Menú</a></li>
+                <li><a href="index.html#porciones">Porciones</a></li>
+                <li><a href="index.html#promociones">Promociones</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li>
+                    <button class="btn-cart" id="btnCart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </li>
+            </ul>
+            
+            <div class="nav__toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero del Menú -->
+    <section class="menu-hero">
+        <div class="container">
+            <div class="menu-hero__content">
+                <h1 class="menu-hero__title">🍽️ Menú Completo</h1>
+                <p class="menu-hero__subtitle">Descubre todas nuestras deliciosas opciones</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtros de Categorías -->
+    <section class="menu-filters">
+        <div class="container">
+            <div class="filters-wrapper">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-utensils"></i> Todos
+                </button>
+                <button class="filter-btn" data-category="pollos">
+                    <i class="fas fa-drumstick-bite"></i> Pollos
+                </button>
+                <button class="filter-btn" data-category="carnes">
+                    <i class="fas fa-bacon"></i> Carnes
+                </button>
+                <button class="filter-btn" data-category="picadas">
+                    <i class="fas fa-fire"></i> Picadas
+                </button>
+                <button class="filter-btn" data-category="acompanantes">
+                    <i class="fas fa-pizza-slice"></i> Acompañantes
+                </button>
+                <button class="filter-btn" data-category="bebidas">
+                    <i class="fas fa-glass-cheers"></i> Bebidas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menú Principal -->
+    <section class="menu-section">
+        <div class="container">
+            <!-- POLLOS -->
+            <div class="menu-category" id="pollos">
+                <div class="category-header">
+                    <i class="fas fa-drumstick-bite"></i>
+                    <h2>Pollos Broaster</h2>
+                    <span class="category-count">6 opciones</span>
+                </div>
+                
+                <div class="menu-grid">
+                    <!-- Pollo Broaster Completo -->
+                    <div class="menu-card" data-category="pollos">
+                        <div class="menu-card__badge menu-card__badge--hot">
+                            <i class="fas fa-fire"></i> Top Ventas
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Pollo Broaster Completo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Pollo Broaster Completo</h3>
+                            <p class="menu-card__description">
+                                Pollo entero broaster extra crujiente con papas fritas, ensalada y salsas especiales
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 4-5 personas</span>
+                                <span class="detail-tag detail-tag--spicy"><i class="fas fa-pepper-hot"></i> Picante opcional</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$38.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Pollo Broaster Completo', 38000, 'assets/images/productos/pollo-broster-completo.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Medio Pollo Broaster -->
+                    <div class="menu-card" data-category="pollos">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Medio Pollo Broaster">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Medio Pollo Broaster</h3>
+                            <p class="menu-card__description">
+                                Media porción de pollo broaster con papas fritas, ensalada y una salsa a elección
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 2-3 personas</span>
+                                <span class="detail-tag"><i class="fas fa-clock"></i> 25 min</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$22.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Medio Pollo Broaster', 22000, 'assets/images/productos/pollo-broster-completo.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cuarto de Pollo -->
+                    <div class="menu-card" data-category="pollos">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Cuarto de Pollo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Cuarto de Pollo Broaster</h3>
+                            <p class="menu-card__description">
+                                Porción individual de pollo broaster con papas y ensalada. Ideal para una persona
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-user"></i> 1 persona</span>
+                                <span class="detail-tag"><i class="fas fa-leaf"></i> Incluye ensalada</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$15.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Cuarto de Pollo Broaster', 15000, 'assets/images/productos/pollo-broster-completo.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pechuga Apanada XXL -->
+                    <div class="menu-card" data-category="pollos">
+                        <div class="menu-card__badge menu-card__badge--new">
+                            <i class="fas fa-star"></i> Premium
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/pechuga-apanada-xxl.jpg" alt="Pechuga Apanada XXL">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Pechuga Apanada Gigante</h3>
+                            <p class="menu-card__description">
+                                Pechuga de pollo apanada tamaño XXL con papas fritas y ensalada fresca
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 2-3 personas</span>
+                                <span class="detail-tag detail-tag--premium"><i class="fas fa-crown"></i> Extra grande</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$32.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Pechuga Apanada Gigante', 32000, 'assets/images/productos/pechuga-apanada-xxl.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alitas BBQ -->
+                    <div class="menu-card" data-category="pollos">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Alitas BBQ">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Alitas BBQ</h3>
+                            <p class="menu-card__description">
+                                12 alitas de pollo bañadas en salsa BBQ casera, con papas gajo y dip ranch
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 1-2 personas</span>
+                                <span class="detail-tag detail-tag--spicy"><i class="fas fa-fire"></i> Picante</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$24.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Alitas BBQ', 24000, 'assets/images/productos/pollo-broster-completo.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nuggets -->
+                    <div class="menu-card" data-category="pollos">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Nuggets de Pollo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Nuggets de Pollo</h3>
+                            <p class="menu-card__description">
+                                15 nuggets crujientes de pechuga de pollo con papas y salsa BBQ o miel mostaza
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-child"></i> Para niños</span>
+                                <span class="detail-tag"><i class="fas fa-heart"></i> Favorito</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$18.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Nuggets de Pollo', 18000, 'assets/images/productos/pollo-broster-completo.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARNES -->
+            <div class="menu-category" id="carnes">
+                <div class="category-header">
+                    <i class="fas fa-bacon"></i>
+                    <h2>Carnes y Costillas</h2>
+                    <span class="category-count">4 opciones</span>
+                </div>
+                
+                <div class="menu-grid">
+                    <!-- Costillas BBQ Premium -->
+                    <div class="menu-card" data-category="carnes">
+                        <div class="menu-card__badge menu-card__badge--premium">
+                            <i class="fas fa-crown"></i> Premium
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/costillas-bbq.jpg" alt="Costillas BBQ Premium">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Costillas BBQ Premium</h3>
+                            <p class="menu-card__description">
+                                Costillas de cerdo bañadas en salsa BBQ casera con papas gajo y ensalada coleslaw
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 2 personas</span>
+                                <span class="detail-tag detail-tag--premium"><i class="fas fa-gem"></i> Premium</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$42.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Costillas BBQ Premium', 42000, 'assets/images/productos/costillas-bbq.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lomo de Cerdo -->
+                    <div class="menu-card" data-category="carnes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/costillas-bbq.jpg" alt="Lomo de Cerdo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Lomo de Cerdo a la Parrilla</h3>
+                            <p class="menu-card__description">
+                                Medallones de lomo jugoso a la parrilla con chimichurri, papas y vegetales asados
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 1-2 personas</span>
+                                <span class="detail-tag"><i class="fas fa-fire"></i> A la parrilla</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$35.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Lomo de Cerdo a la Parrilla', 35000, 'assets/images/productos/costillas-bbq.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chuleta de Cerdo -->
+                    <div class="menu-card" data-category="carnes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/costillas-bbq.jpg" alt="Chuleta de Cerdo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Chuleta de Cerdo Apanada</h3>
+                            <p class="menu-card__description">
+                                Chuleta gruesa apanada dorada con arroz, papas fritas y ensalada
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-user"></i> 1 persona</span>
+                                <span class="detail-tag"><i class="fas fa-drumstick-bite"></i> Porción grande</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$28.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Chuleta de Cerdo Apanada', 28000, 'assets/images/productos/costillas-bbq.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sobrebarriga -->
+                    <div class="menu-card" data-category="carnes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/costillas-bbq.jpg" alt="Sobrebarriga">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Sobrebarriga a la Criolla</h3>
+                            <p class="menu-card__description">
+                                Sobrebarriga de res en salsa criolla con papa criolla, yuca y arroz
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 1-2 personas</span>
+                                <span class="detail-tag"><i class="fas fa-flag"></i> Típico colombiano</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$32.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Sobrebarriga a la Criolla', 32000, 'assets/images/productos/costillas-bbq.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PICADAS -->
+            <div class="menu-category" id="picadas">
+                <div class="category-header">
+                    <i class="fas fa-fire"></i>
+                    <h2>Picadas para Compartir</h2>
+                    <span class="category-count">5 opciones</span>
+                </div>
+                
+                <div class="menu-grid">
+                    <!-- Picada Mixta Especial -->
+                    <div class="menu-card" data-category="picadas">
+                        <div class="menu-card__badge menu-card__badge--hot">
+                            <i class="fas fa-fire"></i> La Más Pedida
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-mixta.jpg" alt="Picada Mixta Especial">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Picada Mixta Especial</h3>
+                            <p class="menu-card__description">
+                                Carne, pollo, chorizo, chicharrón, morcilla, papa criolla y plátano maduro
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 3-4 personas</span>
+                                <span class="detail-tag detail-tag--spicy"><i class="fas fa-pepper-hot"></i> Súper picante</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$45.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Picada Mixta Especial', 45000, 'assets/images/productos/picada-mixta.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Picada de Pollo -->
+                    <div class="menu-card" data-category="picadas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-mixta.jpg" alt="Picada de Pollo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Picada de Pollo Broaster</h3>
+                            <p class="menu-card__description">
+                                Pollo broaster en trozos, papas criollas, plátano maduro y salsas variadas
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 2-3 personas</span>
+                                <span class="detail-tag"><i class="fas fa-drumstick-bite"></i> Solo pollo</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$38.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Picada de Pollo Broaster', 38000, 'assets/images/productos/picada-mixta.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Picada de Carne -->
+                    <div class="menu-card" data-category="picadas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-mixta.jpg" alt="Picada de Carne">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Picada de Carne de Res</h3>
+                            <p class="menu-card__description">
+                                Churrasco, chorizo, morcilla, chicharrón con papa criolla y arepa
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 2-3 personas</span>
+                                <span class="detail-tag"><i class="fas fa-bacon"></i> Solo res</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$42.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Picada de Carne de Res', 42000, 'assets/images/productos/picada-mixta.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Picada Vegetariana -->
+                    <div class="menu-card" data-category="picadas">
+                        <div class="menu-card__badge menu-card__badge--new">
+                            <i class="fas fa-leaf"></i> Nuevo
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-mixta.jpg" alt="Picada Vegetariana">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Picada Vegetariana</h3>
+                            <p class="menu-card__description">
+                                Champiñones, calabacín, berenjena, pimentones, papa criolla y queso gratinado
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 2-3 personas</span>
+                                <span class="detail-tag detail-tag--veggie"><i class="fas fa-leaf"></i> Vegetariano</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$35.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Picada Vegetariana', 35000, 'assets/images/productos/picada-mixta.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mega Picada -->
+                    <div class="menu-card" data-category="picadas">
+                        <div class="menu-card__badge menu-card__badge--premium">
+                            <i class="fas fa-crown"></i> XXL
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-mixta.jpg" alt="Mega Picada">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Mega Picada Familiar</h3>
+                            <p class="menu-card__description">
+                                Pollo, carne, costillas, chorizo, morcilla, chicharrón, papas, plátano, arepas y salsas
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> 5-6 personas</span>
+                                <span class="detail-tag detail-tag--premium"><i class="fas fa-trophy"></i> Extra grande</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-label">Desde</span>
+                                    <span class="price-value">$75.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Mega Picada Familiar', 75000, 'assets/images/productos/picada-mixta.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACOMPAÑANTES -->
+            <div class="menu-category" id="acompanantes">
+                <div class="category-header">
+                    <i class="fas fa-pizza-slice"></i>
+                    <h2>Acompañantes</h2>
+                    <span class="category-count">8 opciones</span>
+                </div>
+                
+                <div class="menu-grid">
+                    <!-- Papas Fritas -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Papas Fritas">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Papas Fritas Grandes</h3>
+                            <p class="menu-card__description">
+                                Papas fritas crujientes con sal y salsa a elección
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> Para compartir</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$8.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Papas Fritas Grandes', 8000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Papas Gajo -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Papas Gajo">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Papas Gajo con Queso</h3>
+                            <p class="menu-card__description">
+                                Papas gajo con queso gratinado y tocineta
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-cheese"></i> Con queso</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$12.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Papas Gajo con Queso', 12000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aros de Cebolla -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Aros de Cebolla">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Aros de Cebolla</h3>
+                            <p class="menu-card__description">
+                                Aros de cebolla apanados crujientes con salsa ranch
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-fire"></i> Crujientes</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$10.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Aros de Cebolla', 10000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Yuca Frita -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Yuca Frita">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Yuca Frita</h3>
+                            <p class="menu-card__description">
+                                Yuca frita dorada con suero costeño
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-flag"></i> Típico</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$9.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Yuca Frita', 9000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plátano Maduro -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Plátano Maduro">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Plátano Maduro</h3>
+                            <p class="menu-card__description">
+                                Plátano maduro frito con queso rallado
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-heart"></i> Favorito</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$7.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Plátano Maduro', 7000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ensalada -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Ensalada">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Ensalada Mixta</h3>
+                            <p class="menu-card__description">
+                                Lechuga, tomate, zanahoria y pepino con aderezo
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag detail-tag--veggie"><i class="fas fa-leaf"></i> Saludable</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$6.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Ensalada Mixta', 6000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arroz -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Arroz">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Arroz Blanco</h3>
+                            <p class="menu-card__description">
+                                Porción grande de arroz blanco
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> Para compartir</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$5.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Arroz Blanco', 5000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arepas -->
+                    <div class="menu-card" data-category="acompanantes">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Arepas">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Arepas con Queso</h3>
+                            <p class="menu-card__description">
+                                3 arepas asadas con queso derretido
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-flag"></i> Típicas</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$8.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Arepas con Queso', 8000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BEBIDAS -->
+            <div class="menu-category" id="bebidas">
+                <div class="category-header">
+                    <i class="fas fa-glass-cheers"></i>
+                    <h2>Bebidas</h2>
+                    <span class="category-count">6 opciones</span>
+                </div>
+                
+                <div class="menu-grid">
+                    <!-- Gaseosas -->
+                    <div class="menu-card" data-category="bebidas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Gaseosas">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Gaseosa Personal</h3>
+                            <p class="menu-card__description">
+                                Coca-Cola, Sprite, Fanta, Colombiana o Manzana
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-bottle-water"></i> 400ml</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$3.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Gaseosa Personal', 3000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gaseosa 1.5L -->
+                    <div class="menu-card" data-category="bebidas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Gaseosa 1.5L">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Gaseosa 1.5 Litros</h3>
+                            <p class="menu-card__description">
+                                Coca-Cola, Sprite, Fanta o Colombiana
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-users"></i> Para compartir</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$5.500</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Gaseosa 1.5 Litros', 5500, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jugos Naturales -->
+                    <div class="menu-card" data-category="bebidas">
+                        <div class="menu-card__badge menu-card__badge--new">
+                            <i class="fas fa-leaf"></i> Natural
+                        </div>
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Jugos Naturales">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Jugo Natural en Agua</h3>
+                            <p class="menu-card__description">
+                                Lulo, mora, mango, maracuyá, guanábana o piña
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag detail-tag--veggie"><i class="fas fa-leaf"></i> 100% natural</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$5.000</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Jugo Natural en Agua', 5000, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jugos en Leche -->
+                    <div class="menu-card" data-category="bebidas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Jugos en Leche">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Jugo Natural en Leche</h3>
+                            <p class="menu-card__description">
+                                Mora, fresa, banano, guanábana o mango en leche
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-mug-hot"></i> Cremoso</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$6.500</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Jugo Natural en Leche', 6500, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Limonada -->
+                    <div class="menu-card" data-category="bebidas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Limonada">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Limonada Natural</h3>
+                            <p class="menu-card__description">
+                                Limonada natural o de coco con hielo
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-lemon"></i> Refrescante</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$4.500</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Limonada Natural', 4500, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agua -->
+                    <div class="menu-card" data-category="bebidas">
+                        <div class="menu-card__image">
+                            <img src="assets/images/productos/picada-principal.jpg" alt="Agua">
+                        </div>
+                        <div class="menu-card__content">
+                            <h3 class="menu-card__title">Agua en Botella</h3>
+                            <p class="menu-card__description">
+                                Agua mineral 600ml
+                            </p>
+                            <div class="menu-card__details">
+                                <span class="detail-tag"><i class="fas fa-tint"></i> Hidratante</span>
+                            </div>
+                            <div class="menu-card__footer">
+                                <div class="menu-card__price">
+                                    <span class="price-value">$2.500</span>
+                                </div>
+                                <button class="btn-add-cart" onclick="addToCart('Agua en Botella', 2500, 'assets/images/productos/picada-principal.jpg')">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carrito Lateral (Sidebar) -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar__header">
+            <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
+            <button class="cart-sidebar__close" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-sidebar__content">
+            <div class="cart-items" id="cartItems">
+                <!-- Los items se agregan dinámicamente con JavaScript -->
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Tu carrito está vacío</p>
+                    <a href="#pollos" class="btn-primary-small">Ver Menú</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-sidebar__footer">
+            <div class="cart-totals">
+                <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Domicilio:</span>
+                    <span id="cartDelivery">$3.000</span>
+                </div>
+                <div class="cart-total-row cart-total-row--total">
+                    <span><strong>Total:</strong></span>
+                    <span id="cartTotal"><strong>$0</strong></span>
+                </div>
+            </div>
+            
+            <button class="btn-checkout" id="btnCheckout">
+                <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Overlay del carrito -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer-section">
+                    <h4>🍗 El Buen Sabor</h4>
+                    <p>El piqueteadero más querido de Villavicencio desde 1998</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Menú</h4>
+                    <ul class="footer-links">
+                        <li><a href="menu.html">Menú Completo</a></li>
+                        <li><a href="#porciones">Porciones</a></li>
+                        <li><a href="#promociones">Promociones</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Información</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
+                        <li><a href="#">Trabaja con Nosotros</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Recibe promociones exclusivas</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu email" required>
+                        <button type="submit" class="btn btn--primary">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2025 El Buen Sabor - Piqueteadero. Todos los derechos reservados.</p>
+                <p class="demo-note">
+                    🎯 Demo creado por <a href="https://madfer93.github.io/Perfil-comercial-Manuel/" target="_blank">Manuel Madrid</a> - 
+                    <a href="https://wa.link/ou9cak" target="_blank">Solicita tu demo personalizado</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== CARRITO LATERAL ===== -->
+    <div id="cartOverlay" class="cart-overlay"></div>
+    
+    <div id="cartSidebar" class="cart-sidebar">
+        <!-- Header del carrito -->
+        <div class="cart-sidebar__header">
+            <h3>
+                <i class="fas fa-shopping-cart"></i>
+                Tu Pedido
+            </h3>
+            <button id="cartClose" class="cart-sidebar__close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Progreso de envío gratis -->
+        <div class="free-delivery-banner">
+            <div class="progress-bar-container">
+                <div id="freeDeliveryProgress" class="progress-bar" style="width: 0%"></div>
+            </div>
+            <p id="freeDeliveryText" class="progress-text">
+                ¡Agrega $35.000 más para envío GRATIS! 🚚
+            </p>
+        </div>
+        
+        <!-- Contenido del carrito -->
+        <div class="cart-sidebar__content">
+            <!-- Estado vacío -->
+            <div id="cartEmpty" class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <h4>Tu carrito está vacío</h4>
+                <p>¡Agrega deliciosos platos desde nuestro menú!</p>
+                <a href="#menu-section" class="btn-primary-small" onclick="closeCart()">
+                    Ver Menú Completo
+                </a>
+            </div>
+            
+            <!-- Items del carrito -->
+            <div id="cartItems" class="cart-items">
+                <!-- Los items se agregan dinámicamente aquí -->
+            </div>
+        </div>
+        
+        <!-- Footer con totales -->
+        <div class="cart-sidebar__footer">
+            <!-- Totales -->
+            <div class="cart-totals">
+                <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Domicilio:</span>
+                    <span id="cartDelivery">$3.000</span>
+                </div>
+                <div class="cart-total-row cart-total-row--total">
+                    <strong>Total:</strong>
+                    <strong id="cartTotal">$0</strong>
+                </div>
+            </div>
+            
+            <!-- Botón de checkout -->
+            <button id="btnCheckout" class="btn-checkout" onclick="cartManager.sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i>
+                Enviar Pedido por WhatsApp
+            </button>
+            
+            <!-- Botón vaciar carrito -->
+            <button class="btn-clear-cart" onclick="if(confirm('¿Seguro que quieres vaciar el carrito?')) cartManager.clear()">
+                <i class="fas fa-trash-alt"></i>
+                Vaciar Carrito
+            </button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/integracion.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Script para controlar el carrito -->
+    <script>
+        // Abrir/Cerrar carrito
+        const cartBtn = document.getElementById('btnCart'); // ID correcto del botón
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartClose = document.getElementById('cartClose');
+        
+        function openCart() {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCart() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        // Event listeners
+        if (cartBtn) cartBtn.addEventListener('click', openCart);
+        if (cartClose) cartClose.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+        
+        // Cerrar con ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && cartSidebar.classList.contains('active')) {
+                closeCart();
+            }
+        });
+        
+        // Función global para cerrar carrito (usada en enlaces)
+        window.closeCart = closeCart;
+        window.openCart = openCart;
+    </script>
+</body>
+</html>

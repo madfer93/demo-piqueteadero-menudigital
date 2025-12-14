@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Buen Sabor - Piqueteadero en Villavicencio</title>
-    <meta name="description" content="El mejor piqueteadero de Villavicencio. Pollo broaster, porciones de carne, chorizo, chicharrón y más. Pedidos por WhatsApp 24/7">
+    <meta name="description" content="Menú digital de El Buen Sabor - Piqueteadero en Villavicencio. Pedidos a domicilio por WhatsApp">
+    <meta property="og:title" content="El Buen Sabor - Menú Digital">
+    <meta property="og:image" content="https://madfer93.github.io/demo-piqueteadero-menudigital/assets/images/hero.jpg">
+    <title>El Buen Sabor - Piqueteadero</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -23,10 +26,12 @@
                 <li><a href="#porciones">Porciones</a></li>
                 <li><a href="#promociones">Promociones</a></li>
                 <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#" class="btn btn--primary btn--small" id="cart-btn">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a></li>
+                <li>
+                    <button class="btn-cart" id="btnCart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                </li>
             </ul>
             <button class="nav__toggle">
                 <i class="fas fa-bars"></i>
@@ -90,7 +95,7 @@
             </div>
 
             <div class="porciones__grid">
-                <!-- Porción 1: Pollo Broaster -->
+                <!-- Pollo Broaster -->
                 <div class="porcion-card" data-animate="fade-up">
                     <div class="card-image">
                         <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Pollo Broaster">
@@ -118,14 +123,14 @@
                                 <span class="price-label">Desde</span>
                                 <span class="price-value">$38.000</span>
                             </div>
-                            <button class="btn btn--primary" onclick="addToCart('pollo-broaster', 'Pollo Broaster Completo', 38000)">
+                            <button class="btn btn--primary" onclick="addToCart('Pollo Broaster Completo', 38000, 'assets/images/productos/pollo-broster-completo.jpg')">
                                 <i class="fas fa-cart-plus"></i> Agregar
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Porción 2: Pechuga Apanada -->
+                <!-- Pechuga Apanada -->
                 <div class="porcion-card" data-animate="fade-up">
                     <div class="card-image">
                         <img src="assets/images/productos/pechuga-apanada-xxl.jpg" alt="Pechuga Apanada">
@@ -149,14 +154,14 @@
                                 <span class="price-label">Desde</span>
                                 <span class="price-value">$32.000</span>
                             </div>
-                            <button class="btn btn--primary" onclick="addToCart('pechuga-apanada', 'Pechuga Apanada Gigante', 32000)">
+                            <button class="btn btn--primary" onclick="addToCart('Pechuga Apanada Gigante', 32000, 'assets/images/productos/pechuga-apanada-xxl.jpg')">
                                 <i class="fas fa-cart-plus"></i> Agregar
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Porción 3: Picada Mixta -->
+                <!-- Picada Mixta -->
                 <div class="porcion-card" data-animate="fade-up">
                     <div class="card-image">
                         <img src="assets/images/productos/picada-mixta.jpg" alt="Picada Mixta">
@@ -181,14 +186,14 @@
                                 <span class="price-label">Desde</span>
                                 <span class="price-value">$45.000</span>
                             </div>
-                            <button class="btn btn--primary" onclick="addToCart('picada-mixta', 'Picada Mixta Especial', 45000)">
+                            <button class="btn btn--primary" onclick="addToCart('Picada Mixta Especial', 45000, 'assets/images/productos/picada-mixta.jpg')">
                                 <i class="fas fa-cart-plus"></i> Agregar
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Porción 4: Costillas BBQ -->
+                <!-- Costillas BBQ -->
                 <div class="porcion-card" data-animate="fade-up">
                     <div class="card-image">
                         <img src="assets/images/productos/costillas-bbq.jpg" alt="Costillas BBQ">
@@ -212,7 +217,7 @@
                                 <span class="price-label">Desde</span>
                                 <span class="price-value">$42.000</span>
                             </div>
-                            <button class="btn btn--primary" onclick="addToCart('costillas-bbq', 'Costillas BBQ Premium', 42000)">
+                            <button class="btn btn--primary" onclick="addToCart('Costillas BBQ Premium', 42000, 'assets/images/productos/costillas-bbq.jpg')">
                                 <i class="fas fa-cart-plus"></i> Agregar
                             </button>
                         </div>
@@ -422,43 +427,57 @@
         </div>
     </footer>
 
-    <!-- Carrito Modal -->
-    <div id="cart-modal" class="cart-modal hidden">
-        <div class="cart-overlay"></div>
-        <div class="cart-content">
-            <div class="cart-header">
-                <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
-                <button class="cart-close" id="close-cart">
-                    <i class="fas fa-times"></i>
-                </button>
+<!-- Carrito Sidebar Avanzado -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar__header">
+            <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
+            <button class="cart-sidebar__close" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="free-delivery-banner">
+            <div class="progress-bar-container">
+                <div id="freeDeliveryProgress" class="progress-bar" style="width: 0%"></div>
             </div>
-            <div id="cart-items" class="cart-items">
-                <div class="cart-empty">
-                    <i class="fas fa-shopping-basket"></i>
-                    <p>Tu carrito está vacío</p>
-                    <a href="menu.html" class="btn btn--primary">Ver Menú</a>
+            <p id="freeDeliveryText" class="progress-text">
+                ¡Agrega $35.000 más para envío GRATIS! 🚚
+            </p>
+        </div>
+
+        <div class="cart-sidebar__content">
+            <div id="cartEmpty" class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <h4>Tu carrito está vacío</h4>
+                <p>¡Agrega deliciosos platos desde nuestro menú!</p>
+                <a href="menu.html" class="btn-primary-small">Ver Menú Completo</a>
+            </div>
+            <div id="cartItems" class="cart-items"></div>
+        </div>
+
+        <div class="cart-sidebar__footer">
+            <div class="cart-totals">
+                <div class="cart-total-row">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0</span>
+                </div>
+                <div class="cart-total-row">
+                    <span>Domicilio:</span>
+                    <span id="cartDelivery">$3.000</span>
+                </div>
+                <div class="cart-total-row cart-total-row--total">
+                    <strong>Total:</strong>
+                    <strong id="cartTotal">$0</strong>
                 </div>
             </div>
-            <div class="cart-footer">
-                <div class="cart-summary">
-                    <div class="summary-row">
-                        <span>Subtotal:</span>
-                        <span id="cart-subtotal">$0</span>
-                    </div>
-                    <div class="summary-row">
-                        <span>Domicilio:</span>
-                        <span id="cart-delivery">$3.000</span>
-                    </div>
-                    <div class="summary-row summary-total">
-                        <strong>Total:</strong>
-                        <strong id="cart-total">$0</strong>
-                    </div>
-                </div>
-                <button class="btn btn--whatsapp btn--large" id="send-order">
-                    <i class="fab fa-whatsapp"></i>
-                    Enviar Pedido por WhatsApp
-                </button>
-            </div>
+            <button id="btnCheckout" class="btn-checkout" onclick="cartManager.sendToWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+            </button>
+            <button class="btn-clear-cart" onclick="if(confirm('¿Vaciar carrito?')) cartManager.clear()">
+                <i class="fas fa-trash-alt"></i> Vaciar Carrito
+            </button>
         </div>
     </div>
 
@@ -468,7 +487,39 @@
     </a>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/integracion.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+
+    <!-- Control del Carrito -->
+    <script>
+        const cartBtn = document.getElementById('btnCart');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartClose = document.getElementById('closeCart');
+
+        function openCart() {
+            cartSidebar.classList.add('active');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            if (cartManager) cartManager.updateUI();
+        }
+
+        function closeCart() {
+            cartSidebar.classList.remove('active');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        if (cartBtn) cartBtn.addEventListener('click', openCart);
+        if (cartClose) cartClose.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cartSidebar.classList.contains('active')) closeCart();
+        });
+    </script>
 </body>
 </html>

@@ -158,17 +158,24 @@ class ShoppingCart {
     
     // Actualizar contador del carrito
     updateCartCount() {
+        // Buscar por clase (carrito sidebar)
         const cartCount = document.querySelector('.cart-count');
+        // Buscar por ID (header)
+        const cartCountById = document.getElementById('cartCount');
+        
         const totalItems = this.getTotalItems();
         
-        if (cartCount) {
-            cartCount.textContent = totalItems;
-            cartCount.style.display = totalItems > 0 ? 'flex' : 'none';
-            
-            // Animación
-            cartCount.classList.add('bounce-in');
-            setTimeout(() => cartCount.classList.remove('bounce-in'), 500);
-        }
+        // Actualizar ambos contadores si existen
+        [cartCount, cartCountById].forEach(element => {
+            if (element) {
+                element.textContent = totalItems;
+                element.style.display = totalItems > 0 ? 'flex' : 'none';
+                
+                // Animación
+                element.classList.add('bounce-in');
+                setTimeout(() => element.classList.remove('bounce-in'), 500);
+            }
+        });
     }
     
     // Renderizar items del carrito
@@ -331,7 +338,7 @@ class ShoppingCart {
     }
     
     animateCartButton() {
-        const cartBtn = document.getElementById('cartBtn');
+        const cartBtn = document.getElementById('btnCart');
         if (cartBtn) {
             cartBtn.classList.add('pulse');
             setTimeout(() => cartBtn.classList.remove('pulse'), 500);
