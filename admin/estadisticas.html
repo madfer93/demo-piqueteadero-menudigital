@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas - Panel Admin | El Buen Sabor</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { background: #f4f6f9; font-family: 'Poppins', sans-serif; }
+        .container { max-width: 1400px; margin: 40px auto; padding: 20px; }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .page-header h1 {
+            color: #e67e22;
+            margin: 0;
+        }
+
+        .stats-period {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .period-btn {
+            padding: 10px 20px;
+            background: #ecf0f1;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .period-btn.active, .period-btn:hover {
+            background: #e67e22;
+            color: white;
+        }
+
+        /* Resumen general - CORREGIDO para evitar superposición */
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px; /* Más espacio antes de los gráficos */
+        }
+
+        .summary-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .summary-card i {
+            font-size: 40px;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .summary-card h3 {
+            font-size: 32px;
+            margin: 10px 0;
+            color: #2c3e50;
+        }
+
+        .summary-card p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        /* Gráficos - Mejor espaciado */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .chart-card {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .chart-card h3 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        canvas {
+            max-height: 400px;
+        }
+
+        /* Responsive mejorado */
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .stats-period {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body onload="loadStatistics()">
+    <!-- Botón Regresar -->
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 999; background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+        <a href="index.html" style="display: flex; align-items: center; gap: 10px; padding: 12px 20px; color: #2c3e50; text-decoration: none; font-weight: 600;">
+            <i class="fas fa-arrow-left" style="font-size: 18px; color: #e67e22;"></i>
+            <span>Dashboard</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>📊 Estadísticas del Negocio</h1>
+            <div class="stats-period">
+                <button class="period-btn active" onclick="setPeriod('week')">Esta Semana</button>
+                <button class="period-btn" onclick="setPeriod('month')">Este Mes</button>
+                <button class="period-btn" onclick="setPeriod('year')">Este Año</button>
+            </div>
+        </div>
+
+        <!-- Resumen general -->
+        <div class="summary-cards">
+            <div class="summary-card">
+                <i class="fas fa-dollar-sign"></i>
+                <h3 id="totalSales">$0</h3>
+                <p>Ventas Totales</p>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-shopping-bag"></i>
+                <h3 id="totalOrders">0</h3>
+                <p>Pedidos Totales</p>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-users"></i>
+                <h3 id="totalClients">0</h3>
+                <p>Clientes Únicos</p>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-star"></i>
+                <h3 id="avgRating">4.9</h3>
+                <p>Calificación Promedio</p>
+            </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="charts-grid">
+            <div class="chart-card">
+                <h3>Ventas por Período</h3>
+                <canvas id="salesChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Productos Más Vendidos</h3>
+                <canvas id="topProductsChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Estado de Pedidos</h3>
+                <canvas id="ordersStatusChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Horarios Pico</h3>
+                <canvas id="peakHoursChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script>
+        let currentPeriod = 'week';
+
+        const statsData = {
+            week: {
+                sales: [1800000, 2100000, 1950000, 2200000, 2400000, 2350000, 2450000],
+                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+                topProducts: ['Pollo Broaster', 'Picada Mixta', 'Pechuga Apanada', 'Costillas BBQ', 'Alitas'],
+                topSales: [87, 52, 41, 35, 28],
+                ordersStatus: { pending: 5, preparing: 8, delivery: 6, completed: 28 },
+                peakHours: [2, 5, 8, 12, 18, 25, 30, 22]
+            },
+            month: {
+                sales: [8000000, 8500000, 8200000, 9000000],
+                labels: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4'],
+                topProducts: ['Pollo Broaster', 'Picada Mixta', 'Pechuga Apanada', 'Costillas BBQ', 'Mega Picada'],
+                topSales: [320, 210, 180, 140, 95],
+                ordersStatus: { pending: 15, preparing: 25, delivery: 30, completed: 180 },
+                peakHours: [10, 15, 25, 40, 55, 70, 85, 90]
+            },
+            year: {
+                sales: [25000000, 28000000, 26000000, 30000000, 32000000, 31000000, 35000000, 34000000, 38000000, 40000000, 42000000, 45000000],
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                topProducts: ['Pollo Broaster', 'Picada Mixta', 'Pechuga Apanada', 'Costillas BBQ', 'Combo Familiar'],
+                topSales: [1200, 850, 720, 600, 450],
+                ordersStatus: { pending: 80, preparing: 120, delivery: 150, completed: 950 },
+                peakHours: [80, 120, 180, 250, 300, 350, 400, 380]
+            }
+        };
+
+        let charts = {};
+
+        function setPeriod(period) {
+            currentPeriod = period;
+            document.querySelectorAll('.period-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            loadStatistics();
+        }
+
+        function loadStatistics() {
+            const data = statsData[currentPeriod];
+
+            // Resumen
+            const totalSales = data.sales.reduce((a, b) => a + b, 0);
+            const totalOrders = data.topSales.reduce((a, b) => a + b, 0);
+
+            document.getElementById('totalSales').textContent = '$' + totalSales.toLocaleString();
+            document.getElementById('totalOrders').textContent = totalOrders;
+            document.getElementById('totalClients').textContent = Math.floor(totalOrders * 0.85); // estimado
+            document.getElementById('avgRating').textContent = '4.9';
+
+            // Gráficos
+            createSalesChart(data.sales, data.labels);
+            createTopProductsChart(data.topProducts, data.topSales);
+            createOrdersStatusChart(data.ordersStatus);
+            createPeakHoursChart(data.peakHours);
+        }
+
+        function createSalesChart(data, labels) {
+            if (charts.sales) charts.sales.destroy();
+            charts.sales = new Chart(document.getElementById('salesChart'), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ventas',
+                        data: data,
+                        borderColor: '#e67e22',
+                        backgroundColor: 'rgba(230, 126, 34, 0.1)',
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#e67e22',
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: { callback: value => '$' + value.toLocaleString() }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createTopProductsChart(labels, data) {
+            if (charts.topProducts) charts.topProducts.destroy();
+            charts.topProducts = new Chart(document.getElementById('topProductsChart'), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Ventas',
+                        data: data,
+                        backgroundColor: '#e67e22',
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        function createOrdersStatusChart(data) {
+            if (charts.ordersStatus) charts.ordersStatus.destroy();
+            charts.ordersStatus = new Chart(document.getElementById('ordersStatusChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Pendientes', 'Preparando', 'En camino', 'Entregados'],
+                    datasets: [{
+                        data: [data.pending, data.preparing, data.delivery, data.completed],
+                        backgroundColor: ['#f39c12', '#3498db', '#9b59b6', '#27ae60'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        function createPeakHoursChart(data) {
+            if (charts.peakHours) charts.peakHours.destroy();
+            charts.peakHours = new Chart(document.getElementById('peakHoursChart'), {
+                type: 'radar',
+                data: {
+                    labels: ['12AM', '3AM', '6AM', '9AM', '12PM', '3PM', '6PM', '9PM'],
+                    datasets: [{
+                        label: 'Pedidos por hora',
+                        data: data,
+                        backgroundColor: 'rgba(230, 126, 34, 0.2)',
+                        borderColor: '#e67e22',
+                        pointBackgroundColor: '#e67e22'
+                    }]
+                },
+                options: { responsive: true }
+            });
+        }
+
+        loadStatistics();
+    </script>
+</body>
+</html>

@@ -6,48 +6,39 @@
     <title>Menú Completo - El Buen Sabor</title>
     <meta name="description" content="Menú completo de El Buen Sabor - Piqueteadero en Villavicencio">
     
-    <!-- CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/animations.css">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header (igual que index) -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
-                <span class="logo-text">El Buen Sabor</span>
-            </a>
-            
-            <ul class="nav__menu" id="navMenu">
+            <div class="logo">
+                <i class="fas fa-drumstick-bite"></i>
+                <span>El Buen Sabor</span>
+            </div>
+            <ul class="nav__menu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="menu.html" class="active">Menú</a></li>
+                <li><a href="menu.html" class="active">Menú Completo</a></li>
                 <li><a href="index.html#porciones">Porciones</a></li>
                 <li><a href="index.html#promociones">Promociones</a></li>
                 <li><a href="index.html#contacto">Contacto</a></li>
                 <li>
                     <button class="btn-cart" id="btnCart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
                     </button>
                 </li>
             </ul>
-            
-            <div class="nav__toggle" id="navToggle">
+            <button class="nav__toggle">
                 <i class="fas fa-bars"></i>
-            </div>
+            </button>
         </nav>
     </header>
 
-    <!-- Hero del Menú -->
+    <!-- Hero del Menú (igual que antes) -->
     <section class="menu-hero">
         <div class="container">
             <div class="menu-hero__content">
@@ -926,8 +917,12 @@
                 </div>
             </div>
             
-            <button class="btn-checkout" id="btnCheckout">
+            <!-- Botón de checkout -->
+            <button id="btnCheckout" class="btn-checkout" onclick="cartManager.sendToWhatsApp()">
                 <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+            </button>
+            <button class="btn-clear-cart" onclick="if(confirm('¿Vaciar carrito?')) cartManager.clear()">
+                <i class="fas fa-trash-alt"></i> Vaciar Carrito
             </button>
         </div>
     </div>
@@ -992,22 +987,17 @@
         </div>
     </footer>
 
-    <!-- ===== CARRITO LATERAL ===== -->
-    <div id="cartOverlay" class="cart-overlay"></div>
-    
-    <div id="cartSidebar" class="cart-sidebar">
-        <!-- Header del carrito -->
+<!-- Carrito Sidebar Avanzado (igual en ambas páginas) -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-sidebar__header">
-            <h3>
-                <i class="fas fa-shopping-cart"></i>
-                Tu Pedido
-            </h3>
-            <button id="cartClose" class="cart-sidebar__close">
+            <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
+            <button class="cart-sidebar__close" id="closeCart">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        
-        <!-- Progreso de envío gratis -->
+
         <div class="free-delivery-banner">
             <div class="progress-bar-container">
                 <div id="freeDeliveryProgress" class="progress-bar" style="width: 0%"></div>
@@ -1016,28 +1006,19 @@
                 ¡Agrega $35.000 más para envío GRATIS! 🚚
             </p>
         </div>
-        
-        <!-- Contenido del carrito -->
+
         <div class="cart-sidebar__content">
-            <!-- Estado vacío -->
             <div id="cartEmpty" class="cart-empty">
                 <i class="fas fa-shopping-basket"></i>
                 <h4>Tu carrito está vacío</h4>
                 <p>¡Agrega deliciosos platos desde nuestro menú!</p>
-                <a href="#menu-section" class="btn-primary-small" onclick="closeCart()">
-                    Ver Menú Completo
-                </a>
+                <a href="menu.html" class="btn-primary-small">Ver Menú Completo</a>
             </div>
-            
-            <!-- Items del carrito -->
-            <div id="cartItems" class="cart-items">
-                <!-- Los items se agregan dinámicamente aquí -->
-            </div>
+
+            <div id="cartItems" class="cart-items"></div>
         </div>
-        
-        <!-- Footer con totales -->
+
         <div class="cart-sidebar__footer">
-            <!-- Totales -->
             <div class="cart-totals">
                 <div class="cart-total-row">
                     <span>Subtotal:</span>
@@ -1055,17 +1036,18 @@
             
             <!-- Botón de checkout -->
             <button id="btnCheckout" class="btn-checkout" onclick="cartManager.sendToWhatsApp()">
-                <i class="fab fa-whatsapp"></i>
-                Enviar Pedido por WhatsApp
+                <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
             </button>
-            
-            <!-- Botón vaciar carrito -->
-            <button class="btn-clear-cart" onclick="if(confirm('¿Seguro que quieres vaciar el carrito?')) cartManager.clear()">
-                <i class="fas fa-trash-alt"></i>
-                Vaciar Carrito
+            <button class="btn-clear-cart" onclick="if(confirm('¿Vaciar carrito?')) cartManager.clear()">
+                <i class="fas fa-trash-alt"></i> Vaciar Carrito
             </button>
         </div>
     </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.link/ou9cak" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <!-- Scripts -->
     <script src="js/config.js"></script>
@@ -1073,42 +1055,35 @@
     <script src="js/integracion.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
-    
-    <!-- Script para controlar el carrito -->
+    <script src="js/chatbot.js"></script>
+
+    <!-- Control del Carrito -->
     <script>
-        // Abrir/Cerrar carrito
-        const cartBtn = document.getElementById('btnCart'); // ID correcto del botón
+        const cartBtn = document.getElementById('btnCart');
         const cartSidebar = document.getElementById('cartSidebar');
         const cartOverlay = document.getElementById('cartOverlay');
-        const cartClose = document.getElementById('cartClose');
-        
+        const cartClose = document.getElementById('closeCart');
+
         function openCart() {
             cartSidebar.classList.add('active');
             cartOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            if (cartManager) cartManager.updateUI();
         }
-        
+
         function closeCart() {
             cartSidebar.classList.remove('active');
             cartOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
-        
-        // Event listeners
+
         if (cartBtn) cartBtn.addEventListener('click', openCart);
         if (cartClose) cartClose.addEventListener('click', closeCart);
         if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
-        
-        // Cerrar con ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && cartSidebar.classList.contains('active')) {
-                closeCart();
-            }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cartSidebar.classList.contains('active')) closeCart();
         });
-        
-        // Función global para cerrar carrito (usada en enlaces)
-        window.closeCart = closeCart;
-        window.openCart = openCart;
     </script>
 </body>
 </html>

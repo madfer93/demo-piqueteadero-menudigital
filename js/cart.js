@@ -196,7 +196,9 @@ class ShoppingCart {
         container.innerHTML = this.items.map((item, index) => `
             <div class="cart-item slide-in-down" data-index="${index}">
                 <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.name}" onerror="this.src='assets/images/placeholder.jpg'">
+                    <img src="${item.image.startsWith('http') ? item.image : './' + item.image}" 
+                    alt="${item.name}" 
+                    onerror="this.src='assets/images/placeholder.jpg'; this.onerror=null;">
                 </div>
                 <div class="cart-item-details">
                     <h4 class="cart-item-name">${item.name}</h4>
@@ -393,5 +395,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ===== EXPORTAR GLOBALMENTE =====
-window.cartManager = cartManager;
+window.cartManager = cartManager;        // ← ESTA LÍNEA ES CRUCIAL
 window.ShoppingCart = ShoppingCart;

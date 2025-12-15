@@ -1,0 +1,8 @@
+# Configuración PHP
+admin/api/config.php
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/

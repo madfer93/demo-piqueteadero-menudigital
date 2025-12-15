@@ -1118,3 +1118,290 @@ section {
     padding-top: var(--space-3);
     border-top: 2px solid var(--gray-200);
 }
+/* ChefBot Chat Widget Flotante */
+.chefbot-float-btn {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 100px;
+    right: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 28px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.chefbot-float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.chefbot-tooltip {
+    position: absolute;
+    right: 70px;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.chefbot-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #333;
+}
+
+.chefbot-float-btn:hover .chefbot-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Widget del Chat */
+.chefbot-chat-widget {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.chefbot-chat-widget.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.chefbot-chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chefbot-header-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chefbot-header-info h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.status-online {
+    color: #a8ffbc;
+}
+
+.chefbot-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.chefbot-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.message {
+    margin-bottom: 15px;
+    max-width: 80%;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 18px 18px 18px 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.user-message {
+    align-self: flex-end;
+    background: #667eea;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 18px 18px 5px 18px;
+}
+
+.chefbot-input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background: white;
+    border-radius: 0 0 16px 16px;
+}
+
+.chefbot-input-area input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+}
+
+.chefbot-input-area button {
+    margin-left: 10px;
+    background: #667eea;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chefbot-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.chefbot-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .chefbot-chat-widget {
+        width: 100%;
+        height: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+}
+/* Banner CTA Panel Admin */
+.admin-cta-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 900px;
+    background: linear-gradient(135deg, #e67e22, #f39c12);
+    color: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    z-index: 999;
+    animation: slideUp 0.8s ease, pulse 2s infinite;
+    padding: 20px;
+}
+
+.admin-cta-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.admin-cta-text h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.admin-cta-text p {
+    font-size: 16px;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.admin-cta-btn {
+    background: white;
+    color: #e67e22;
+    font-weight: bold;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.admin-cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.admin-cta-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.admin-cta-close:hover {
+    opacity: 1;
+}
+
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.02); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-cta-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .admin-cta-text h3 {
+        font-size: 20px;
+    }
+    .admin-cta-text p {
+        font-size: 15px;
+    }
+}

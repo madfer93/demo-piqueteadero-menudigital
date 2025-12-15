@@ -3,77 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Panel Administrador</title>
+    <title>Login - Panel Admin | El Buen Sabor</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body.login-page {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff8c42 0%, #e67e22 50%, #d35400 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .login-container {
+            display: flex;
+            width: 900px;
+            max-width: 95%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .login-image {
+            flex: 1;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('../assets/images/productos/picada-principal.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-image h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .login-image ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .login-image li {
+            margin: 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-image li i {
+            margin-right: 15px;
+            color: #a8ffbc;
+            font-size: 20px;
+        }
+
+        .login-form-container {
+            flex: 1;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header i {
+            font-size: 50px;
+            color: #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .login-header h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .login-header p {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            color: #95a5a6;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .form-group input:focus ~ label,
+        .form-group input:valid ~ label {
+            top: -10px;
+            left: 10px;
+            font-size: 12px;
+            background: white;
+            padding: 0 8px;
+            color: #e67e22;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #e67e22;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.2);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: none;
+            border: none;
+            color: #95a5a6;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .btn--primary.btn--large {
+            width: 100%;
+            padding: 15px;
+            background: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn--primary.btn--large:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+        }
+
+        .demo-credentials {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px dashed #e67e22;
+        }
+
+        .demo-credentials code {
+            background: #2c3e50;
+            color: #a8ffbc;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: monospace;
+        }
+
+        .superadmin-note {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #95a5a6;
+            text-align: center;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+            .login-image {
+                padding: 40px;
+            }
+            .login-form-container {
+                padding: 40px;
+            }
+        }
+    </style>
 </head>
 <body class="login-page">
     <div class="login-container">
-        <div class="login-box">
-            <div class="login-header">
-                <i class="fas fa-drumstick-bite"></i>
-                <h1>Panel Administrador</h1>
-                <p>El Buen Sabor - Piqueteadero</p>
-            </div>
-
-            <form id="login-form" class="login-form">
-                <div class="form-group">
-                    <label for="username">
-                        <i class="fas fa-user"></i>
-                        Usuario
-                    </label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        placeholder="Ingresa tu usuario"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="password">
-                        <i class="fas fa-lock"></i>
-                        Contraseña
-                    </label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        placeholder="Ingresa tu contraseña"
-                        required
-                    >
-                    <button type="button" class="toggle-password">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                </div>
-
-                <div class="form-options">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="remember">
-                        <span>Recordarme</span>
-                    </label>
-                    <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-                </div>
-
-                <button type="submit" class="btn btn--primary btn--large">
-                    <i class="fas fa-sign-in-alt"></i>
-                    Iniciar Sesión
-                </button>
-
-                <div id="login-error" class="login-error hidden">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <span></span>
-                </div>
-            </form>
-
-            <div class="login-footer">
-                <p>Credenciales de prueba:</p>
-                <div class="demo-credentials">
-                    <code>Usuario: admin | Contraseña: ElBuenSabor2024</code>
-                </div>
-            </div>
-        </div>
-
-        <div class="login-info">
+        <!-- Beneficios -->
+        <div class="login-image">
             <h2>Panel de Gestión Autónomo</h2>
             <ul>
                 <li><i class="fas fa-check-circle"></i> Edita el menú sin código</li>
@@ -82,8 +223,92 @@
                 <li><i class="fas fa-check-circle"></i> Control total de tu negocio</li>
             </ul>
         </div>
+
+        <!-- Login -->
+        <div class="login-form-container">
+            <div class="login-header">
+                <i class="fas fa-drumstick-bite"></i>
+                <h1>Panel Administrador</h1>
+                <p>El Buen Sabor - Piqueteadero</p>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="text" id="username" required>
+                    <label for="username"><i class="fas fa-user"></i> Usuario</label>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" id="password" required>
+                    <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--large">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Iniciar Sesión
+                </button>
+            </form>
+
+            <!-- Credenciales visibles para clientes -->
+            <div class="demo-credentials">
+                <p><strong>Prueba el panel con estas credenciales:</strong></p>
+                <code>admin</code> / <code>demo2025</code>
+                <br>
+                <small>(Como cliente, puedes modificar el menú libremente)</small>
+            </div>
+
+            <!-- Nota para superadmin (tú) -->
+            <p class="superadmin-note">
+                ¿Eres el desarrollador? Usa tu cuenta Google para acceso superadmin (resetear cambios).
+            </p>
+        </div>
     </div>
 
-    <script src="js/auth.js"></script>
+<script>
+    // Credenciales
+    const ADMIN_USER = 'admin';
+    const ADMIN_PASS = 'demo2025';
+    const SUPER_USER = 'superadmin';
+    const SUPER_PASS = 'super2025reset'; // Cambia esta si quieres más seguridad
+
+    function login() {
+        const username = document.getElementById('username').value.trim().toLowerCase();
+        const password = document.getElementById('password').value;
+
+        if (username === ADMIN_USER && password === ADMIN_PASS) {
+            localStorage.setItem('admin_logged', 'true');
+            localStorage.setItem('user_role', 'admin');
+            localStorage.setItem('admin_name', 'Cliente Demo');
+            window.location.href = 'index.html'; // Dashboard normal para cliente
+        } else if (username === SUPER_USER && password === SUPER_PASS) {
+            localStorage.setItem('admin_logged', 'true');
+            localStorage.setItem('user_role', 'superadmin');
+            localStorage.setItem('admin_name', 'SuperAdmin');
+            window.location.href = 'superadmin.html'; // ¡Directo al panel SuperAdmin!
+        } else {
+            alert('Credenciales incorrectas.\n\nPrueba con:\n• admin / demo2025 (cliente)\n• superadmin / super2025reset (desarrollador)');
+        }
+    }
+
+    function togglePassword() {
+        const password = document.getElementById('password');
+        const icon = document.querySelector('.toggle-password i');
+        if (password.type === 'password') {
+            password.type = 'text';
+            icon.classList.replace('fa-eye', 'fa-eye-slash');
+        } else {
+            password.type = 'password';
+            icon.classList.replace('fa-eye-slash', 'fa-eye');
+        }
+    }
+
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        login();
+    });
+</script>
 </body>
 </html>

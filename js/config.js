@@ -6,9 +6,9 @@
 const SITE_CONFIG = {
     // ===== INFORMACIÓN DE CONTACTO =====
     contact: {
-        whatsapp: '573001234567',  // ⚠️ CAMBIAR por número real (formato: 57 + número sin espacios)
+        whatsapp: '573045788873',  // ⚠️ CAMBIAR por número real (formato: 57 + número sin espacios)
         phone: '+57 (8) 662 3456',
-        email: 'contacto@elbuensabor.com',
+        email: 'madfer1993+demoasadero@gmail.com',
         address: 'Calle 45 #23-10, Villavicencio, Meta',
         instagram: '@elbuensaborvillo',
         facebook: 'ElBuenSaborPiqueteadero'

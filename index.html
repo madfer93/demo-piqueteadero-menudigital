@@ -12,6 +12,45 @@
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+<!-- Botón Flotante ChefBot (abre el chat integrado) -->
+<button class="chefbot-float-btn" id="openChefBotChat" aria-label="Abrir chat con ChefBot">
+    <i class="fas fa-robot"></i>
+    <span class="chefbot-tooltip">ChefBot IA<br><small>¡Pregúntame lo que quieras!</small></span>
+</button>
+<!-- Chat Widget ChefBot -->
+<div class="chefbot-chat-widget" id="chefBotChatWidget">
+    <div class="chefbot-chat-header">
+        <div class="chefbot-header-info">
+            <i class="fas fa-robot"></i>
+            <div>
+                <h4>ChefBot IA</h4>
+                <small class="status-online">● En línea</small>
+            </div>
+        </div>
+        <button class="chefbot-close-btn" id="closeChefBotChat">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <div class="chefbot-messages" id="chefBotMessages">
+        <div class="message bot-message">
+            <p>¡Hola! 👋 Soy ChefBot, tu asistente de El Buen Sabor.</p>
+            <p>¿En qué te ayudo hoy?</p>
+            <small>Por ejemplo: "Recomiéndame algo para 4 personas" o "¿Qué tiene la picada mixta?"</small>
+        </div>
+    </div>
+
+    <div class="chefbot-input-area">
+        <input type="text" id="chefBotInput" placeholder="Escribe tu mensaje..." autocomplete="off">
+        <button id="chefBotSend">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Overlay para cerrar al hacer clic fuera -->
+<div class="chefbot-overlay" id="chefBotOverlay"></div>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -22,7 +61,7 @@
             </div>
             <ul class="nav__menu">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="menu.html">Menú</a></li>
+                <li><a href="menu.html">Menú Completo</a></li>
                 <li><a href="#porciones">Porciones</a></li>
                 <li><a href="#promociones">Promociones</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -57,7 +96,7 @@
                         <i class="fas fa-utensils"></i>
                         Ver Menú Completo
                     </a>
-                    <a href="#" class="btn btn--whatsapp btn--large" id="chefbot-btn">
+                    <a href="https://wa.link/ou9cak" class="btn btn--whatsapp btn--large" id="chefbot-btn">
                         <i class="fas fa-robot"></i>
                         ChefBot IA
                     </a>
@@ -77,9 +116,24 @@
                     </div>
                 </div>
             </div>
+            <!-- Banner Panel Admin - Llamado a acción para el cliente -->
+<div class="admin-cta-banner" id="adminCtaBanner">
+    <div class="admin-cta-content">
+        <div class="admin-cta-text">
+            <h3>🛠️ ¿Quieres personalizar tu menú digital?</h3>
+            <p>Entra al Panel Admin y modifica productos, precios, imágenes y promociones <strong>a tu gusto en segundos</strong>. ¡Sin código ni esperar al desarrollador!</p>
+        </div>
+        <a href="admin/login.html" class="btn btn--primary btn--large admin-cta-btn">
+            <i class="fas fa-tools"></i> Entrar al Panel Admin
+        </a>
+        <button class="admin-cta-close" onclick="closeAdminCta()">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>
             <div class="hero__visual">
                 <div class="hero__image-main">
-                    <img src="assets/images/productos/picada-principal.jpg" alt="Pollo Broaster Crujiente" loading="eager">
+                    <img src="assets/images/productos/picada-principal.jpg" alt="Picada Mixta" loading="eager">
                 </div>
             </div>
         </div>
@@ -100,24 +154,10 @@
                     <div class="card-image">
                         <img src="assets/images/productos/pollo-broster-completo.jpg" alt="Pollo Broaster">
                         <span class="card-badge badge-hot">🔥 Top Ventas</span>
-                        <button class="btn-favorite">
-                            <i class="far fa-heart"></i>
-                        </button>
                     </div>
                     <div class="card-content">
                         <h3>Pollo Broaster Completo</h3>
-                        <p class="card-description">
-                            Pollo entero broaster extra crujiente con papas fritas, 
-                            ensalada y salsas especiales
-                        </p>
-                        <div class="card-info">
-                            <span class="info-item">
-                                <i class="fas fa-users"></i> 4-5 personas
-                            </span>
-                            <span class="info-item">
-                                <i class="fas fa-fire"></i> Picante opcional
-                            </span>
-                        </div>
+                        <p class="card-description">Pollo entero broaster con papas, ensalada y salsas</p>
                         <div class="card-footer">
                             <div class="card-price">
                                 <span class="price-label">Desde</span>
@@ -137,18 +177,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Pechuga Apanada Gigante</h3>
-                        <p class="card-description">
-                            Pechuga de pollo apanada tamaño XXL con papas
-                            y ensalada fresca
-                        </p>
-                        <div class="card-info">
-                            <span class="info-item">
-                                <i class="fas fa-users"></i> 2-3 personas
-                            </span>
-                            <span class="info-item">
-                                <i class="fas fa-drumstick-bite"></i> Extra grande
-                            </span>
-                        </div>
+                        <p class="card-description">Pechuga XXL con papas y ensalada fresca</p>
                         <div class="card-footer">
                             <div class="card-price">
                                 <span class="price-label">Desde</span>
@@ -169,18 +198,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Picada Mixta Especial</h3>
-                        <p class="card-description">
-                            Carne, pollo, chorizo, chicharrón, morcilla, papa criolla 
-                            y plátano maduro
-                        </p>
-                        <div class="card-info">
-                            <span class="info-item">
-                                <i class="fas fa-users"></i> 3-4 personas
-                            </span>
-                            <span class="info-item">
-                                <i class="fas fa-pepper-hot"></i> Súper picante
-                            </span>
-                        </div>
+                        <p class="card-description">Carne, pollo, chorizo, papa y plátano</p>
                         <div class="card-footer">
                             <div class="card-price">
                                 <span class="price-label">Desde</span>
@@ -200,18 +218,7 @@
                     </div>
                     <div class="card-content">
                         <h3>Costillas BBQ Premium</h3>
-                        <p class="card-description">
-                            Costillas de cerdo bañadas en salsa BBQ casera con 
-                            papas gajo y ensalada coleslaw
-                        </p>
-                        <div class="card-info">
-                            <span class="info-item">
-                                <i class="fas fa-users"></i> 2 personas
-                            </span>
-                            <span class="info-item">
-                                <i class="fas fa-award"></i> Premium
-                            </span>
-                        </div>
+                        <p class="card-description">Costillas en salsa BBQ con papas gajo</p>
                         <div class="card-footer">
                             <div class="card-price">
                                 <span class="price-label">Desde</span>
@@ -227,7 +234,7 @@
 
             <div class="section-cta">
                 <a href="menu.html" class="btn btn--secondary btn--large">
-                    Ver Todas las Porciones <i class="fas fa-arrow-right"></i>
+                    Ver Menú Completo <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
         </div>
@@ -293,13 +300,12 @@
                         <li><i class="fas fa-check-circle"></i> Combos inteligentes</li>
                         <li><i class="fas fa-check-circle"></i> Atención 24/7</li>
                     </ul>
-                    <div class="chefbot-buttons">
-                        <button class="btn btn--whatsapp btn--large" id="open-chefbot">
-                            <i class="fab fa-whatsapp"></i>
-                            Hablar con ChefBot
-                        </button>
-                        <span class="chefbot-note">Responde en menos de 5 segundos</span>
-                    </div>
+                    <a href="https://wa.me/573001234567?text=¡Hola%20ChefBot!%20👋%20Ayúdame%20a%20elegir%20qué%20pedir%20hoy" 
+                        class="btn btn--whatsapp btn--large" 
+                        target="_blank" 
+                        rel="noopener">
+                        <i class="fab fa-whatsapp"></i> Hablar con ChefBot
+                    </a>
                 </div>
             </div>
         </div>
@@ -318,7 +324,7 @@
                         <i class="fab fa-whatsapp"></i>
                     </div>
                     <h3>WhatsApp</h3>
-                    <p>+57 312 345 6789</p>
+                    <p>+57 3045788873</p>
                     <a href="https://wa.link/ou9cak" class="btn btn--outline btn--small" target="_blank">
                         Enviar Mensaje
                     </a>
@@ -427,7 +433,7 @@
         </div>
     </footer>
 
-<!-- Carrito Sidebar Avanzado -->
+<!-- Carrito Sidebar Avanzado (igual en ambas páginas) -->
     <div class="cart-overlay" id="cartOverlay"></div>
 
     <div class="cart-sidebar" id="cartSidebar">
@@ -454,6 +460,7 @@
                 <p>¡Agrega deliciosos platos desde nuestro menú!</p>
                 <a href="menu.html" class="btn-primary-small">Ver Menú Completo</a>
             </div>
+
             <div id="cartItems" class="cart-items"></div>
         </div>
 
@@ -472,6 +479,8 @@
                     <strong id="cartTotal">$0</strong>
                 </div>
             </div>
+            
+            <!-- Botón de checkout -->
             <button id="btnCheckout" class="btn-checkout" onclick="cartManager.sendToWhatsApp()">
                 <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
             </button>
@@ -490,6 +499,7 @@
     <script src="js/config.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/integracion.js"></script>
+    <script src="js/menu.js"></script>
     <script src="js/main.js"></script>
     <script src="js/chatbot.js"></script>
 
@@ -521,5 +531,76 @@
             if (e.key === 'Escape' && cartSidebar.classList.contains('active')) closeCart();
         });
     </script>
+    <script>
+// ChefBot Chat - Respuestas inteligentes
+const chefBotResponses = {
+    default: "¡Claro! 😊 Te recomiendo el Pollo Broaster Completo, nuestro más vendido. ¿Quieres que te cuente más o prefieres otra opción?",
+    hola: "¡Hola! 👋 ¿En qué te ayudo hoy? Puedo recomendarte según cantidad de personas, presupuesto o gustos.",
+    gracias: "¡De nada! 😄 Que disfrutes tu comida de El Buen Sabor.",
+    precio: "Nuestros precios van desde $15.000 (cuarto de pollo) hasta $75.000 (mega picada). ¿Tienes un presupuesto en mente?",
+    picada: "La Picada Mixta Especial es perfecta para 3-4 personas: carne, pollo, chorizo, papa criolla y plátano. ¡Súper recomendada! 🔥",
+    pollo: "El Pollo Broaster Completo es nuestro clásico: entero, crujiente, con papas y ensalada por $38.000. ¡El favorito desde 1998!",
+    pechuga: "La Pechuga Apanada Gigante es enorme, perfecta para 2-3 personas por $32.000. Muy jugosa por dentro y crujiente por fuera.",
+    costo: "El domicilio es $3.000, ¡pero gratis si tu pedido supera $35.000! 🚚",
+    personas: "Dime cuántas personas son y te armo el combo perfecto 😊",
+    picante: "¡Te gusta lo fuerte! 🔥 Te recomiendo la Picada Mixta o las Costillas BBQ con salsa extra picante."
+};
+
+document.getElementById('openChefBotChat').addEventListener('click', () => {
+    document.getElementById('chefBotChatWidget').classList.add('active');
+    document.getElementById('chefBotOverlay').classList.add('active');
+});
+
+document.getElementById('closeChefBotChat').addEventListener('click', closeChat);
+document.getElementById('chefBotOverlay').addEventListener('click', closeChat);
+
+function closeChat() {
+    document.getElementById('chefBotChatWidget').classList.remove('active');
+    document.getElementById('chefBotOverlay').classList.remove('active');
+}
+
+document.getElementById('chefBotSend').addEventListener('click', sendMessage);
+document.getElementById('chefBotInput').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+});
+
+function sendMessage() {
+    const input = document.getElementById('chefBotInput');
+    const message = input.value.trim().toLowerCase();
+    
+    if (!message) return;
+    
+    // Mensaje del usuario
+    addMessage(message, 'user-message');
+    
+    // Respuesta del bot
+    setTimeout(() => {
+        let response = chefBotResponses.default;
+        
+        if (message.includes('hola') || message.includes('buenas')) response = chefBotResponses.hola;
+        else if (message.includes('gracias')) response = chefBotResponses.gracias;
+        else if (message.includes('precio') || message.includes('cuanto')) response = chefBotResponses.precio;
+        else if (message.includes('picada')) response = chefBotResponses.picada;
+        else if (message.includes('pollo')) response = chefBotResponses.pollo;
+        else if (message.includes('pechuga')) response = chefBotResponses.pechuga;
+        else if (message.includes('domicilio') || message.includes('envio')) response = chefBotResponses.costo;
+        else if (message.includes('personas') || message.match(/\d/)) response = chefBotResponses.personas;
+        else if (message.includes('picante') || message.includes('fuerte')) response = chefBotResponses.picante;
+        
+        addMessage(response, 'bot-message');
+    }, 800);
+    
+    input.value = '';
+}
+
+function addMessage(text, className) {
+    const messages = document.getElementById('chefBotMessages');
+    const div = document.createElement('div');
+    div.className = `message ${className}`;
+    div.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+}
+</script>
 </body>
 </html>

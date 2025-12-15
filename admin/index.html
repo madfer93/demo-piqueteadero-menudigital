@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Panel Admin</title>
+    <title>Dashboard - Panel Admin | El Buen Sabor</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="admin-page">
+<body class="admin-page" onload="loadDashboard()">
     <!-- Sidebar -->
     <aside class="admin-sidebar">
         <div class="sidebar-header">
@@ -18,24 +20,24 @@
         <nav class="sidebar-nav">
             <a href="index.html" class="nav-item active">
                 <i class="fas fa-chart-line"></i>
-                Dashboard
+                <span>Dashboard</span>
             </a>
             <a href="menu-editor.html" class="nav-item">
                 <i class="fas fa-utensils"></i>
-                Editar Menú
+                <span>Editar Menú</span>
             </a>
             <a href="pedidos.html" class="nav-item">
                 <i class="fas fa-shopping-bag"></i>
-                Pedidos
-                <span class="badge">3</span>
+                <span>Pedidos</span>
+                <span class="badge" id="pendingOrdersBadge">0</span>
             </a>
             <a href="estadisticas.html" class="nav-item">
                 <i class="fas fa-chart-bar"></i>
-                Estadísticas
+                <span>Estadísticas</span>
             </a>
-            <a href="#" class="nav-item">
-                <i class="fas fa-cog"></i>
-                Configuración
+            <a href="#" onclick="logout()" class="nav-item logout">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Cerrar Sesión</span>
             </a>
         </nav>
 
@@ -43,29 +45,27 @@
             <div class="user-info">
                 <i class="fas fa-user-circle"></i>
                 <div>
-                    <strong>Admin</strong>
-                    <span>Propietario</span>
+                    <strong id="adminName">Admin</strong>
+                    <span id="adminRole">Propietario</span>
                 </div>
             </div>
-            <button class="btn-logout">
-                <i class="fas fa-sign-out-alt"></i>
-            </button>
         </div>
     </aside>
 
     <!-- Main Content -->
     <main class="admin-main">
         <header class="admin-header">
-            <h1>Dashboard</h1>
+            <div>
+                <h1>Bienvenido al Dashboard</h1>
+                <p id="welcomeDate">Domingo 14 de diciembre, 2025</p>
+            </div>
             <div class="header-actions">
-                <button class="btn btn--outline">
-                    <i class="fas fa-download"></i>
-                    Exportar Reporte
+                <button class="btn btn--outline" onclick="exportReport()">
+                    <i class="fas fa-download"></i> Exportar Reporte
                 </button>
-                <button class="btn btn--primary">
-                    <i class="fas fa-plus"></i>
-                    Nuevo Producto
-                </button>
+                <a href="menu-editor.html" class="btn btn--primary">
+                    <i class="fas fa-plus"></i> Nuevo Producto
+                </a>
             </div>
         </header>
 
@@ -76,11 +76,9 @@
                     <i class="fas fa-dollar-sign"></i>
                 </div>
                 <div class="stat-content">
-                    <h3>$2.450.000</h3>
-                    <p>Ventas Hoy</p>
-                    <span class="stat-trend up">
-                        <i class="fas fa-arrow-up"></i> +12%
-                    </span>
+                    <h3 id="salesToday">$0</h3>
+                    <p>Ventas del Día</p>
+                    <span class="stat-trend up" id="salesTrend">+0%</span>
                 </div>
             </div>
 
@@ -89,11 +87,9 @@
                     <i class="fas fa-shopping-bag"></i>
                 </div>
                 <div class="stat-content">
-                    <h3>47</h3>
+                    <h3 id="ordersToday">0</h3>
                     <p>Pedidos Hoy</p>
-                    <span class="stat-trend up">
-                        <i class="fas fa-arrow-up"></i> +8%
-                    </span>
+                    <span class="stat-trend up" id="ordersTrend">+0%</span>
                 </div>
             </div>
 
@@ -102,11 +98,8 @@
                     <i class="fas fa-clock"></i>
                 </div>
                 <div class="stat-content">
-                    <h3>3</h3>
+                    <h3 id="activeOrders">0</h3>
                     <p>Pedidos Activos</p>
-                    <span class="stat-trend">
-                        En preparación
-                    </span>
                 </div>
             </div>
 
@@ -115,105 +108,76 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <div class="stat-content">
-                    <h3>4.9</h3>
-                    <p>Calificación</p>
-                    <span class="stat-trend">
-                        ⭐⭐⭐⭐⭐
-                    </span>
+                    <h3 id="rating">4.9</h3>
+                    <p>Calificación Promedio</p>
+                    <span class="stat-trend">⭐⭐⭐⭐⭐</span>
                 </div>
             </div>
         </div>
 
-        <!-- Recent Orders -->
+        <!-- Gráfico de Ventas -->
         <div class="admin-section">
             <div class="section-header">
-                <h2>Pedidos Recientes</h2>
-                <a href="pedidos.html">Ver todos →</a>
+                <h2>Ventas Últimos 7 Días</h2>
             </div>
-
-            <div class="table-container">
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Cliente</th>
-                            <th>Productos</th>
-                            <th>Total</th>
-                            <th>Estado</th>
-                            <th>Hora</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>#1234</td>
-                            <td>Juan Pérez</td>
-                            <td>Pollo Broaster, Papas</td>
-                            <td>$42.000</td>
-                            <td><span class="status status-pending">En preparación</span></td>
-                            <td>15:30</td>
-                            <td>
-                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-check"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#1233</td>
-                            <td>María García</td>
-                            <td>Picada Mixta</td>
-                            <td>$45.000</td>
-                            <td><span class="status status-delivery">En camino</span></td>
-                            <td>15:15</td>
-                            <td>
-                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                                <button class="btn-icon"><i class="fas fa-check"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#1232</td>
-                            <td>Carlos López</td>
-                            <td>Pechuga Apanada</td>
-                            <td>$32.000</td>
-                            <td><span class="status status-completed">Entregado</span></td>
-                            <td>14:45</td>
-                            <td>
-                                <button class="btn-icon"><i class="fas fa-eye"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <canvas id="salesChart" height="100"></canvas>
         </div>
 
-        <!-- Top Products -->
-        <div class="admin-section">
-            <div class="section-header">
-                <h2>Productos Más Vendidos</h2>
+        <!-- Pedidos Recientes + Top Products -->
+        <div class="grid-2">
+            <!-- Pedidos Recientes -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>Pedidos Recientes</h2>
+                    <a href="pedidos.html">Ver todos →</a>
+                </div>
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentOrdersTable">
+                            <!-- Se llena con JS -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="../assets/images/productos/pollo-broaster.jpg" alt="Pollo Broaster">
-                    <h4>Pollo Broaster</h4>
-                    <p>87 ventas hoy</p>
-                    <span class="product-price">$38.000</span>
+            <!-- Productos Más Vendidos -->
+            <div class="admin-section">
+                <div class="section-header">
+                    <h2>Top Productos Hoy</h2>
                 </div>
-                <div class="product-card">
-                    <img src="../assets/images/productos/picada-mixta.jpg" alt="Picada Mixta">
-                    <h4>Picada Mixta</h4>
-                    <p>52 ventas hoy</p>
-                    <span class="product-price">$45.000</span>
-                </div>
-                <div class="product-card">
-                    <img src="../assets/images/productos/pechuga-apanada.jpg" alt="Pechuga">
-                    <h4>Pechuga Apanada</h4>
-                    <p>41 ventas hoy</p>
-                    <span class="product-price">$32.000</span>
+                <div class="products-grid" id="topProductsGrid">
+                    <!-- Se llena con JS -->
                 </div>
             </div>
         </div>
     </main>
 
+    <script src="js/auth.js"></script>
     <script src="js/admin.js"></script>
+
+    <script>
+    if (isSuperAdmin()) {
+        document.getElementById('superadminOptions').style.display = 'block';
+    }
+
+    function resetAllData() {
+        if (confirm('¿RESETEAR TODO? Esto eliminará menú, pedidos y estadísticas. ¡Irreversible!')) {
+            localStorage.removeItem('elbuensabor_menu');
+            localStorage.removeItem('elbuensabor_orders');
+            localStorage.removeItem('dashboard_data');
+            alert('Todo reseteado. Recargando...');
+            location.reload();
+        }
+    }
+    </script>
 </body>
 </html>
