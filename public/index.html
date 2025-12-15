@@ -7,25 +7,25 @@
     <meta property="og:title" content="El Buen Sabor - Menú Digital">
     <meta property="og:image" content="https://madfer93.github.io/demo-piqueteadero-menudigital/assets/images/hero.jpg">
     <title>El Buen Sabor - Piqueteadero</title>
-    <link rel="stylesheet" href="public/assets/css/styles.css">
-    <link rel="stylesheet" href="public/assets/css/animations.css">
-    <link rel="stylesheet" href="public/assets/css/menu.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header (igual que index) -->
+    <!-- Header -->
     <header class="header">
         <nav class="nav container">
-            <a href="index.html" class="nav__logo">
-                <span class="logo-text">El Buen Sabor</span>
-            </a>
-            
-            <ul class="nav__menu" id="navMenu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="menu.html" class="active">Menú</a></li>
-                <li><a href="index.html#porciones">Porciones</a></li>
-                <li><a href="index.html#promociones">Promociones</a></li>
-                <li><a href="index.html#contacto">Contacto</a></li>
+            <div class="logo">
+                <i class="fas fa-drumstick-bite"></i>
+                <span>El Buen Sabor</span>
+            </div>
+            <ul class="nav__menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="menu.html">Menú</a></li>
+                <li><a href="#porciones">Porciones</a></li>
+                <li><a href="#promociones">Promociones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
                 <li>
                     <button class="btn-cart" id="btnCart">
                         <i class="fas fa-shopping-cart"></i>
@@ -39,12 +39,43 @@
         </nav>
     </header>
 
-    <!-- Hero del Menú -->
-    <section class="menu-hero">
-        <div class="container">
-            <div class="menu-hero__content">
-                <h1 class="menu-hero__title">🍽️ Menú Completo</h1>
-                <p class="menu-hero__subtitle">Descubre todas nuestras deliciosas opciones</p>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero__overlay"></div>
+        <div class="hero__content container">
+            <div class="hero__text">
+                <span class="hero__tag">🔥 El Original desde 1998</span>
+                <h1 class="hero__title">
+                    El Mejor Piqueteadero de <span class="text-highlight">Villavicencio</span>
+                </h1>
+                <p class="hero__description">
+                    Pollo broaster crujiente, porciones de carne jugosas y los mejores acompañantes. 
+                    <strong>Pedidos a domicilio en 30 minutos o menos.</strong>
+                </p>
+                <div class="hero__buttons">
+                    <a href="menu.html" class="btn btn--primary btn--large">
+                        <i class="fas fa-utensils"></i>
+                        Ver Menú Completo
+                    </a>
+                    <a href="#" class="btn btn--whatsapp btn--large" id="chefbot-btn">
+                        <i class="fas fa-robot"></i>
+                        ChefBot IA
+                    </a>
+                </div>
+                <div class="hero__features">
+                    <div class="feature-badge">
+                        <i class="fas fa-clock"></i>
+                        <span>Entrega 30 min</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-star"></i>
+                        <span>4.9/5 ⭐ (1,200 reseñas)</span>
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-motorcycle"></i>
+                        <span>Domicilio gratis +$35k</span>
+                    </div>
+                </div>
             </div>
             <div class="hero__visual">
                 <div class="hero__image-main">
@@ -250,7 +281,7 @@
             <div class="chefbot-content">
                 <div class="chefbot-visual">
                     <div class="card-image">
-                        <img src="public/assets/images/ChefBot IA.jpg" alt="ChefBot IA">
+                        <img src="assets/images/ChefBot IA.jpg" alt="ChefBot IA">
                     </div>
                 </div>
                 <div class="chefbot-text">
@@ -324,10 +355,18 @@
                     <span class="status-open">🟢 Abierto ahora</span>
                 </div>
             </div>
-            
-            <button class="btn-checkout" id="btnCheckout">
-                <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
-            </button>
+
+            <!-- Mapa -->
+            <div class="mapa-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.4857477889!2d-73.6261!3d4.1420!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwMDgnMzEuMiJOIDczwrAzNyczNC4wIlc!5e0!3m2!1ses!2sco!4v1234567890"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
         </div>
     </section>
 
@@ -388,11 +427,10 @@
         </div>
     </footer>
 
-    <!-- ===== CARRITO LATERAL ===== -->
-    <div id="cartOverlay" class="cart-overlay"></div>
-    
-    <div id="cartSidebar" class="cart-sidebar">
-        <!-- Header del carrito -->
+<!-- Carrito Sidebar Avanzado -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-sidebar__header">
             <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
             <button class="cart-sidebar__close" id="closeCart">
@@ -416,11 +454,7 @@
                 <p>¡Agrega deliciosos platos desde nuestro menú!</p>
                 <a href="menu.html" class="btn-primary-small">Ver Menú Completo</a>
             </div>
-            
-            <!-- Items del carrito -->
-            <div id="cartItems" class="cart-items">
-                <!-- Los items se agregan dinámicamente aquí -->
-            </div>
+            <div id="cartItems" class="cart-items"></div>
         </div>
 
         <div class="cart-sidebar__footer">
@@ -453,13 +487,13 @@
     </a>
 
     <!-- Scripts -->
-    <script src="js/config.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/integracion.js"></script>
-    <script src="js/menu.js"></script>
-    <script src="js/main.js"></script>
-    
-    <!-- Script para controlar el carrito -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/integracion.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/chatbot.js"></script>
+
+    <!-- Control del Carrito -->
     <script>
         const cartBtn = document.getElementById('btnCart');
         const cartSidebar = document.getElementById('cartSidebar');

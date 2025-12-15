@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Panel Administrador</title>
+    <link rel="stylesheet" href="assets/css/admin.css">
     <title>Login - Panel Admin | El Buen Sabor</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -267,48 +269,6 @@
         </div>
     </div>
 
-<script>
-    // Credenciales
-    const ADMIN_USER = 'admin';
-    const ADMIN_PASS = 'demo2025';
-    const SUPER_USER = 'superadmin';
-    const SUPER_PASS = 'super2025reset'; // Cambia esta si quieres más seguridad
-
-    function login() {
-        const username = document.getElementById('username').value.trim().toLowerCase();
-        const password = document.getElementById('password').value;
-
-        if (username === ADMIN_USER && password === ADMIN_PASS) {
-            localStorage.setItem('admin_logged', 'true');
-            localStorage.setItem('user_role', 'admin');
-            localStorage.setItem('admin_name', 'Cliente Demo');
-            window.location.href = 'index.html'; // Dashboard normal para cliente
-        } else if (username === SUPER_USER && password === SUPER_PASS) {
-            localStorage.setItem('admin_logged', 'true');
-            localStorage.setItem('user_role', 'superadmin');
-            localStorage.setItem('admin_name', 'SuperAdmin');
-            window.location.href = 'superadmin.html'; // ¡Directo al panel SuperAdmin!
-        } else {
-            alert('Credenciales incorrectas.\n\nPrueba con:\n• admin / demo2025 (cliente)\n• superadmin / super2025reset (desarrollador)');
-        }
-    }
-
-    function togglePassword() {
-        const password = document.getElementById('password');
-        const icon = document.querySelector('.toggle-password i');
-        if (password.type === 'password') {
-            password.type = 'text';
-            icon.classList.replace('fa-eye', 'fa-eye-slash');
-        } else {
-            password.type = 'password';
-            icon.classList.replace('fa-eye-slash', 'fa-eye');
-        }
-    }
-
-    document.getElementById('login-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        login();
-    });
-</script>
+    <script src="js/auth.js"></script>
 </body>
 </html>

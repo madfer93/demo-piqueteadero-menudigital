@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Configuración PHP
 admin/api/config.php
 
@@ -6,3 +7,53 @@ admin/api/config.php
 Thumbs.db
 *.swp
 .vscode/
+=======
+# Dependencies
+node_modules/
+vendor/
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+dist/
+build/
+*.min.js
+*.min.css
+
+# Backup files
+*.bak
+*.backup
+*.tmp
+
+# Config sensible
+admin/api/config.php
+config/database.php
+config/credentials.php
+
+# Archivos temporales
+tmp/
+temp/
+cache/
+>>>>>>> efb7b345fa11a0deab96c30f0e8af9c0f349bf43

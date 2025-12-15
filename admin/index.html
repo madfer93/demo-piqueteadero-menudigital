@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Panel Admin</title>
+    <link rel="stylesheet" href="assets/css/admin.css">
     <title>Dashboard - Panel Admin | El Buen Sabor</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -161,23 +163,6 @@
         </div>
     </main>
 
-    <script src="js/auth.js"></script>
     <script src="js/admin.js"></script>
-
-    <script>
-    if (isSuperAdmin()) {
-        document.getElementById('superadminOptions').style.display = 'block';
-    }
-
-    function resetAllData() {
-        if (confirm('¿RESETEAR TODO? Esto eliminará menú, pedidos y estadísticas. ¡Irreversible!')) {
-            localStorage.removeItem('elbuensabor_menu');
-            localStorage.removeItem('elbuensabor_orders');
-            localStorage.removeItem('dashboard_data');
-            alert('Todo reseteado. Recargando...');
-            location.reload();
-        }
-    }
-    </script>
 </body>
 </html>
